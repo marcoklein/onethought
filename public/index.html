@@ -59,10 +59,10 @@
                     
                     
                     <!-- Interruption notes (interruption) -->
-                    <div v-if="interruption && !finish && !finishOngoing">
+                    <!--<div v-if="interruption && !finish && !finishOngoing">
                         <h4>Why did you interrupt?</h4>
                         <input id="interruption-input" v-model="interruptionNote" type="text" class="form-control" placeholder="Interruption notes">
-                    </div>
+                    </div>-->
 
                     <!-- add class gap-top if interrutpion is true -->
                     <div v-bind:class="{ 'gap-top': interruption }">
@@ -89,13 +89,13 @@
                         <div>
                             <star-rating v-model="rating" class="center-vertically" style="display: inline-block" :show-rating="false"></star-rating>
                         </div>
-                        <input type="text" class="form-control" placeholder="Notes">
+                        <input type="text" v-model="sessionNotes" class="form-control" placeholder="Notes">
                         <button v-on:click="saveSession" class="btn btn-primary btn-lg gap-top"><span class="glyphicon glyphicon-save"></span> Done</button>
                     </div>
                     <button v-if="!finish && (shortBreak || longBreak)" v-on:click="newSession" class="btn btn-warning btn-lg gap-top">Skip Break</button>
 
                     <!-- Reward text field -->
-                    <div v-if="!running && !finish && !finishOngoing && reward === ''">
+                    <div v-if="(!running && !finish && !finishOngoing) || (running && reward !== '')">
                         <h4>Reward</h4>
                         <div class="input-group">
                             <input id="task-input" v-bind:readonly="running" v-model="reward" type="text" class="form-control" placeholder="Reward">
@@ -108,6 +108,31 @@
             </div>
         </div>
 
+        <!-- Saved Sessions -->
+        <div class="table-responsive gap-top">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Length</th>
+                        <th>Reward</th>
+                        <th>Rating</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="session in savedSessions">
+                        <td>{{session.task}}</td>
+                        <td>{{session.length}}</td>
+                        <td>{{session.reward}}</td>
+                        <td>{{session.rating}}</td>
+                        <td>{{session.notes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
         <hr>
 
         

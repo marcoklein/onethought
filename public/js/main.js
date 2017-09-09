@@ -25,15 +25,19 @@ var app = new Vue({
             allowNegativeTime: true,
             shortBreakLength: DEFAULT_SHORT_BREAK_LENGTH
         },
+        savedSessions: [
+            
+        ],
         
         
         /** Session properties **/
-        rating: 0,
         // specified task if any
         task: "",
         sessionDuration: -1,
         reward: "",
         interruptionNote: "",
+        rating: 0,
+        sessionNotes: "",
         
         
         /** States **/
@@ -136,6 +140,16 @@ var app = new Vue({
             self.sessionDuration = self.settings.startTime - self.time;
             Logger.info("Session Duration: " + moment(self.sessionDuration).format("mm:ss"));
             self.startBreak();
+            
+            // save session
+            var session = {
+                task: self.task,
+                length: moment(self.sessionDuration).format("mm:ss"),
+                reward: self.reward,
+                rating: self.rating,
+                notes: self.sessionNotes
+            };
+            self.savedSessions.push(session);
         },
         finishOngoingSession: function () {
             var self = this;
