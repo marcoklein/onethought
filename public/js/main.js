@@ -147,8 +147,16 @@ var app = new Vue({
         startBreak: function () {
             Logger.info("Starting break.");
             var self = this;
+            
+            // reset state
+            self.finish = false;
+            self.running = false;
+            self.finishOngoing = false;
+            self.interruption = false;
+            
             // TODO short or long break?
             self.shortBreak = true;
+            self.lastTime = moment();
             self.time = self.settings.shortBreakLength;
             self.updateTime();
         },
@@ -179,7 +187,7 @@ var app = new Vue({
                 }
             }
             
-            if (self.running) {
+            if (self.running || self.shortBreak || self.longBreak) {
                 // if still running make new timeout
                 self.timerTimeout = setTimeout(function () {
                     self.updateTime();

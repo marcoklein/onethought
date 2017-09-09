@@ -67,7 +67,7 @@
                     <!-- add class gap-top if interrutpion is true -->
                     <div v-bind:class="{ 'gap-top': interruption }">
                         <!-- Start/Continue Button (start & interruption) -->
-                        <button v-if="!running && !interruption && !finish && !finishOngoing" type="button" class="btn btn-primary btn-lg" v-on:click="startSession"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start</button>
+                        <button v-if="!running && !interruption && !finish && !finishOngoing && !shortBreak && !longBreak" type="button" class="btn btn-primary btn-lg" v-on:click="startSession"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start</button>
                         <!-- Continue Button (interruption) -->
                         <button v-if="interruption && !finish && !finishOngoing" type="button" class="btn btn-primary btn-lg" v-on:click="startSession"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Continue</button>
                         <!-- Interruption Button (running) -->
