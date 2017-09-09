@@ -1,0 +1,40 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#taskArea {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#timeArea {
+    text-align: center;
+}
+
+#timeArea h1 {
+    font-size: 6em;
+}
+#optionsArea {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.center-vertically {
+    margin: 0 auto;
+}
+
+
+.gap-top {
+    margin-top: 1em;
+}
+
+/* Hide initial content */
+[v-cloak] {
+  display: none;
+}
+
+
+
+
