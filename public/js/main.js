@@ -107,6 +107,7 @@ var app = new Vue({
             self.shortBreak = false;
             self.longBreak = false;
             self.time = self.settings.startTime;
+            document.title = "OneThought - a focus timer"
         },
         // interrupt the ongoing session
         interruptSession: function () {
@@ -185,8 +186,18 @@ var app = new Vue({
         updateTime: function () {
             var self = this;
             // update time text
-            self.time -= moment() - self.lastTime;
-            self.lastTime = moment();
+            
+            if (self.running || self.shortBreak || self.longBreak) {
+                self.time -= moment() - self.lastTime;
+                self.lastTime = moment();
+                // if still running make new timeout
+                self.timerTimeout = setTimeout(function () {
+                    self.updateTime();
+                }, TIMER_UPDATE_INTERVAL);
+            }
+            
+            var timeText = this.time < 0 ? "-" + (moment(-this.time + 1000).format("mm:ss")) : moment(this.time).format("mm:ss");
+            document.title = "(" + timeText + ")";
             
             // if negative time is not allowed stop here
             if ((!self.settings.allowNegativeTime || self.shortBreak || self.longBreak) && self.time < 0) {
@@ -201,12 +212,6 @@ var app = new Vue({
                 }
             }
             
-            if (self.running || self.shortBreak || self.longBreak) {
-                // if still running make new timeout
-                self.timerTimeout = setTimeout(function () {
-                    self.updateTime();
-                }, TIMER_UPDATE_INTERVAL);
-            }
         }
     }
 });
