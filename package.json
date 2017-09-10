@@ -1,0 +1,19 @@
+{
+  "name": "onethought",
+  "version": "1.0.0",
+  "description": "Focus timer.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoklein/onethought.git"
+  },
+  "author": "Marco Klein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoklein/onethought/issues"
+  },
+  "homepage": "https://github.com/marcoklein/onethought#readme"
+}
