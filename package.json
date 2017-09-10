@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/marcoklein/onethought/issues"
   },
-  "homepage": "https://github.com/marcoklein/onethought#readme"
+  "homepage": "https://github.com/marcoklein/onethought#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
