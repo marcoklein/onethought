@@ -40,9 +40,9 @@
             <div class="col-sm-6 col-sm-offset-3">
                 <div id="taskArea">
                     <div class="input-group">
-                        <input id="task-input" v-bind:readonly="running" v-model="task" type="text" class="form-control" placeholder="Task">
+                        <input ref="taskInput" v-bind:readonly="running" v-model="task" type="text" class="form-control" placeholder="Task">
                         <span class="input-group-btn">
-                            <button v-on:click="task='';$('#task-input').focus()" v-bind:disabled="running" class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button v-on:click="task='';$refs.taskInput.focus()" v-bind:disabled="running" class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                         </span>
                     </div>
                 </div>
@@ -98,9 +98,9 @@
                     <div v-if="(!running && !finish && !finishOngoing) || (running && reward !== '')">
                         <h4>Reward</h4>
                         <div class="input-group">
-                            <input id="task-input" v-bind:readonly="running" v-model="reward" type="text" class="form-control" placeholder="Reward">
+                            <input ref="rewardInput" v-bind:readonly="running" v-model="reward" type="text" class="form-control" placeholder="Reward">
                             <span class="input-group-btn">
-                                <button v-on:click="task='';$('#task-input').focus()" v-bind:disabled="running" class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                                <button v-on:click="task='';$refs.rewardInput.focus()" v-bind:disabled="running" class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                             </span>
                         </div>
                     </div>
